@@ -1,49 +1,74 @@
-This repository contains an MVP Random Forest model and a small Tkinter UI for predicting student GPA from lifestyle features.
+# Ethiopian Student GPA Prediction System
 
-Files
+Machine Learning project for predicting Ethiopian student GPA using Random Forest Regressor.
 
-- `studentgpa.py`: Main script. Supports `train` and `ui` commands.
-- `student_lifestyle_dataset.csv`, `ethiopian_student_lifestyle.csv`, `ethiopian_sentiment_data.csv`: example datasets.
-- `requirements.txt`: Python dependencies.
+## About
 
-Quick start
+This system predicts student GPA based on lifestyle and academic factors such as:
 
-1. Create a virtual environment and install dependencies:
+- Study hours
+- Sleep hours
+- Attendance
+- Stress level
+- Monthly budget
+- Physical activity
+- Social activity
 
-```bash
-python -m venv .venv
-.venv\Scripts\activate
-pip install -r requirements.txt
+The project uses Machine Learning with Random Forest Regressor and provides a simple GUI using Tkinter.
+
+## Technologies Used
+
+- Python
+- Tkinter
+- Pandas
+- NumPy
+- Scikit-learn
+- Matplotlib
+- Seaborn
+
+## Features
+
+- Predict student GPA
+- Feature importance visualization
+- Confusion matrix visualization
+- Attendance validation
+- Automatic extracurricular hour calculation
+- Simple desktop GUI
+
+## Machine Learning Model
+
+Model used:
+
+- Random Forest Regressor
+
+## Dataset
+
+Dataset file:
+
+```bash id="n7zq2v"
+ethiopian_student_lifestyle.csv
 ```
 
-2. Train model on a CSV (default file `student_lifestyle_dataset.csv`):
+## How to Run
 
-```bash
-python studentgpa.py train --data ethiopian_student_lifestyle.csv --model rf_ethiopian.joblib
+Install required libraries:
+
+```bash id="t1l6gq"
+pip install pandas numpy scikit-learn matplotlib seaborn
 ```
 
-3. Run the UI (loads saved model if present):
+Run the project:
 
-```bash
-python studentgpa.py ui --model rf_ethiopian.joblib
+```bash id="68h6qz"
+python main.py
 ```
 
-4. Start the built-in Flask API (no separate file needed):
+## Author
 
-```bash
-python studentgpa.py api --model rf_ethiopian.joblib --host 0.0.0.0 --port 5000
-```
+ASHENAFI HABTE ATLAW
 
-5. Generate evaluation reports (PNG files saved):
+- GitHub: https://github.com/ashe21-max
 
-```bash
-python studentgpa.py report --model rf_ethiopian.joblib --data ethiopian_student_lifestyle.csv
-```
+## License
 
-The interface calculates **Extracurricular Hours** automatically: you only enter study, sleep, social and physical hours, and the remaining time up to 24 is assigned to extracurricular. The Predict button becomes active only when those four inputs are valid (between 0 and 24) and their total does not exceed 24; if it is disabled a short message explains the reason. Analysis controls (confusion matrix and feature importance) appear below the prediction controls on the same page.
-
-Notes
-
-- Input hours are validated to be non-negative and total <= 24.
-- Model persistence via `joblib`.
-- Use `--search` with `train` to run a small randomized hyperparameter search.
+This project is free to use for educational purposes.
